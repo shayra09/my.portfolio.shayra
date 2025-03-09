@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { motion } from 'framer-motion';
+import React from "react";
+import styled, { keyframes } from "styled-components";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";  // ✅ Use Link for routing
 
-// Subtle Animated Gradient Background
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -20,30 +20,37 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 100px 20px 20px;  /* ✅ Added padding to prevent overlap */
 `;
 
-// Neon Orange Glow Effect on Title
 const Title = styled(motion.h1)`
   font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
-  color: #ff5733; /* Neon Orange */
+  color: #ff5733;
   text-shadow: 0px 0px 15px rgba(255, 87, 51, 0.8), 
                0px 0px 30px rgba(255, 87, 51, 0.6);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
-// Subtitle with Light Gray Tone
 const Subtitle = styled(motion.p)`
   font-size: 1.4rem;
   max-width: 700px;
   line-height: 1.7;
   color: #d1d1d1;
+
+  small {
+    font-size: 1.2rem;
+    display: block;
+    opacity: 0.9;
+  }
 `;
 
-// Glassmorphic Neon Button with Orange Glow
-const Button = styled(motion.a)`
+const Button = styled(motion(Link))`
   margin-top: 30px;
   padding: 14px 40px;
   background: rgba(255, 87, 51, 0.2);
@@ -59,8 +66,6 @@ const Button = styled(motion.a)`
 
   &:hover {
     background: rgba(255, 87, 51, 0.4);
-    box-shadow: 0px 0px 25px rgba(255, 87, 51, 0.9),
-                0px 0px 50px rgba(255, 87, 51, 0.7);
     transform: scale(1.05);
   }
 `;
@@ -68,28 +73,13 @@ const Button = styled(motion.a)`
 const Home = () => {
   return (
     <Container>
-      <Title
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <Title initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
         hey.. i'm Shayra
       </Title>
-      <Subtitle
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
-      >
-       <small>A passionate Software Engineer & Web Developer... </small> 
-       
+      <Subtitle initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.3 }}>
+        <small>A passionate Software Engineer & Web Developer...</small>
       </Subtitle>
-      <Button
-        href="/projects"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        View My Work
-      </Button>
+      <Button to="/projects">View My Work</Button>
     </Container>
   );
 };
