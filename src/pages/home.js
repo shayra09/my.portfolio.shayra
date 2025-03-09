@@ -73,7 +73,7 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-         i'm Shayra
+        hey.. i'm Shayra
       </Title>
       <Subtitle
         initial={{ opacity: 0, x: -20 }}
