@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Container = styled.section`
   max-width: 600px;
@@ -14,6 +15,7 @@ const Container = styled.section`
 `;
 
 const Heading = styled(motion.h2)`
+  padding-top: 70px;
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 20px;
@@ -94,6 +96,35 @@ const Button = styled(motion.button)`
   }
 `;
 
+const Footer = styled.footer`
+  width: 100%;
+  background: linear-gradient(90deg, rgba(36,36,36,1), rgba(0,0,0,1));
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #bbb;
+  position: relative;
+  bottom: 0;
+  margin-top: auto;
+`;
+
+const FooterLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+
+  a {
+    color: #ff5733;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: #e64a2e;
+    }
+  }
+`;
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
@@ -108,23 +139,41 @@ const Contact = () => {
   };
 
   return (
-    <Container>
-      <Heading as={motion.h2} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        Contact Me
-      </Heading>
+    <>
+      <Container>
+        <Heading as={motion.h2} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          Contact Me
+        </Heading>
 
-      <ContactInfo>
-        <p>Email: <a href="mailto:shayra@example.com">shayra690@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/shayra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/shayra-ansari-44b9a533b/</a></p>
-      </ContactInfo>
+        <ContactInfo>
+          <p>Email: <a href="mailto:shayra@example.com">shayra690@gmail.com</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/shayra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/shayra-ansari-44b9a533b/</a></p>
+        </ContactInfo>
 
-      <Form onSubmit={handleSubmit} as={motion.form} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-        <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-        <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
-        <TextArea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
-        <Button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Send Message</Button>
-      </Form>
-    </Container>
+        <Form onSubmit={handleSubmit} as={motion.form} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+          <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+          <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+          <TextArea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
+          <Button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Send Message</Button>
+        </Form>
+      </Container>
+
+      <Footer>
+        <FooterLinks>
+          <a href="https://www.linkedin.com/in/shayra-ansari-44b9a533b/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/shayra09" target="_blank" rel="noopener noreferrer">
+            <FaGithub />
+          </a>
+          <a href="mailto:shayra690@gmail.com">
+            <FaEnvelope />
+          </a>
+        </FooterLinks>
+        © {new Date().getFullYear()} Shayra | Built by 
+        <a href="https://github.com/shayra09" target="_blank" rel="noopener noreferrer"> Shayra</a>
+      </Footer>
+    </>
   );
 };
 

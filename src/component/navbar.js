@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { FiMenu, FiX, FiUser } from "react-icons/fi"; // ✅ Imported user icon
+import { FiMenu, FiX } from "react-icons/fi";
+//import Capture from "./images/Capture.PNG"; // Import your logo image
 
 const Nav = styled.nav`
   background: ${({ isScrolled }) =>
@@ -20,42 +21,28 @@ const Nav = styled.nav`
   transition: all 0.3s ease-in-out;
 `;
 
-const Logo = styled.h1`
-  color: purple;
-  font-size: 1.8rem;
-  font-weight: bold;
-  cursor: pointer;
-  font-style: italic;
-  transition: transform 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
 
 const NavLinks = styled.ul`
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 20px;
   z-index: 1106;
-
- 
 
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
     right: ${({ open }) => (open ? "0" : "-100%")};
-    width: 100vw;
+    width: 75vw;
     height: 100vh;
-  
     background: rgba(10, 10, 30, 0.95);
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
     transition: right 0.3s ease-in-out;
+    padding: 20px;
   }
 `;
 
@@ -63,13 +50,8 @@ const StyledNavLink = styled(NavLink)`
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
-  padding: 10px;
-  position: relative;
+  padding: 15px;
   transition: color 0.3s ease-in-out;
-  z-index: 1107;
-  display: flex;
-  align-items: center;
-  margin-right:30px;
 
   &.active {
     color: #ff0099;
@@ -81,18 +63,12 @@ const StyledNavLink = styled(NavLink)`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.3rem;
-    padding: 10px;
+    font-size: 1.5rem;
     width: 100%;
-    justify-content: center;
+    text-align: center;
   }
 `;
-{/*}
-const ContactIcon = styled(FiUser)`
-  font-size: 1.4rem;
- margin-right:500px;
-`;
-*/}
+
 const MenuIcon = styled.div`
   display: none;
   color: #fff;
@@ -114,7 +90,6 @@ const Overlay = styled.div`
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1104;
-  transition: opacity 0.3s ease-in-out;
 `;
 
 const Navbar = () => {
@@ -136,26 +111,21 @@ const Navbar = () => {
   return (
     <>
       <Nav isScrolled={isScrolled}>
-        <Logo onClick={() => setMenuOpen(false)}>Shayra</Logo>
-
+        {/*<Logo src={Capture} alt="Capture" onClick={() => setMenuOpen(false)} />*/}
+        
         <MenuIcon onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FiX /> : <FiMenu />}
         </MenuIcon>
 
         <NavLinks open={menuOpen}>
-          <StyledNavLink to="/" onClick={() => setTimeout(() => setMenuOpen(false), 300)}>Home</StyledNavLink>
-          <StyledNavLink to="/about" onClick={() => setTimeout(() => setMenuOpen(false), 300)}>About</StyledNavLink>
-          <StyledNavLink to="/projects" onClick={() => setTimeout(() => setMenuOpen(false), 300)}>Projects</StyledNavLink>
-
-          {/* Contact Menu Item with Icon */}
-          <StyledNavLink to="/contact" onClick={() => setTimeout(() => setMenuOpen(false), 300)}>
-            Contact {/*</ContactIcon*/}
-          </StyledNavLink>
+          <StyledNavLink to="/" onClick={() => setMenuOpen(false)}>Home</StyledNavLink>
+          <StyledNavLink to="/about" onClick={() => setMenuOpen(false)}>About</StyledNavLink>
+          <StyledNavLink to="/projects" onClick={() => setMenuOpen(false)}>Projects</StyledNavLink>
+          <StyledNavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</StyledNavLink>
         </NavLinks>
       </Nav>
 
-      {/* Clickable overlay to close menu */}
-      <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
+      <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} aria-hidden="true" />
     </>
   );
 };

@@ -3,10 +3,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
 
-const GlobalStyle = styled.div`
-  overflow-x: hidden; /* Prevents horizontal scroll */
-`;
-
 const Nav = styled.nav`
   background: ${({ isScrolled }) =>
     isScrolled ? "rgba(0, 0, 0, 0.9)" : "linear-gradient(135deg, #000000, #2c003e)"};
@@ -20,16 +16,15 @@ const Nav = styled.nav`
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1100;
+  z-index: 1105;
   transition: all 0.3s ease-in-out;
 `;
 
-const Logo = styled.h1`
-  color: purple;
+const LogoText = styled.div`
   font-size: 1.8rem;
   font-weight: bold;
+  color: #fff;
   cursor: pointer;
-  font-style: italic;
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -40,14 +35,14 @@ const Logo = styled.h1`
 const NavLinks = styled.ul`
   list-style: none;
   display: flex;
-  gap: 25px;
-  z-index: 1102; /* Ensure it's above other content */
+  gap: 20px;
+  z-index: 1106;
 
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
     right: ${({ open }) => (open ? "0" : "-100%")};
-    width: 100vw;
+    width: 75vw;
     height: 100vh;
     background: rgba(10, 10, 30, 0.95);
     backdrop-filter: blur(10px);
@@ -55,8 +50,9 @@ const NavLinks = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
     transition: right 0.3s ease-in-out;
+    padding: 20px;
+    overflow-y: auto;
   }
 `;
 
@@ -64,10 +60,8 @@ const StyledNavLink = styled(NavLink)`
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
-  padding: 12px;
-  position: relative;
+  padding: 15px;
   transition: color 0.3s ease-in-out;
-  z-index: 1103; /* Ensure links are clickable */
 
   &.active {
     color: #ff0099;
@@ -78,21 +72,9 @@ const StyledNavLink = styled(NavLink)`
     transform: scale(1.1);
   }
 
-  &:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 100%;
-    height: 2px;
-    background: #ff0099;
-    transition: width 0.3s ease-in-out;
-  }
-
   @media (max-width: 768px) {
     font-size: 1.5rem;
-    padding: 15px;
-    display: block;
+    width: 100%;
     text-align: center;
   }
 `;
@@ -102,7 +84,7 @@ const MenuIcon = styled.div`
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1105; /* Ensure menu icon is always clickable */
+  z-index: 1108;
 
   @media (max-width: 768px) {
     display: block;
@@ -117,8 +99,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1099;
-  transition: opacity 0.3s ease-in-out;
+  z-index: 1104;
 `;
 
 const Navbar = () => {
@@ -138,9 +119,9 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <GlobalStyle>
+    <>
       <Nav isScrolled={isScrolled}>
-        <Logo>Shayra</Logo>
+        <LogoText onClick={() => setMenuOpen(false)}>Shayra</LogoText>
 
         <MenuIcon onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FiX /> : <FiMenu />}
@@ -154,9 +135,8 @@ const Navbar = () => {
         </NavLinks>
       </Nav>
 
-      {/* Clickable overlay to close menu */}
-      <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
-    </GlobalStyle>
+      <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} aria-hidden="true" />
+    </>
   );
 };
 
