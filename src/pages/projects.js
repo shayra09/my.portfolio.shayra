@@ -17,7 +17,7 @@ const Container = styled.section`
 const Heading = styled.h2`
   padding-top: 70px;
   font-size: 2.5rem;
-  color: #333;
+  color: #00adb4;
   margin-bottom: 20px;
 
   @media (max-width: 600px) {
@@ -31,21 +31,22 @@ const ProjectList = styled.ul`
 `;
 
 const ProjectItem = styled(motion.li)`
-  background:#233942;
+  background: #222831;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 173, 180, 0.2);
   text-align: left;
   transition: transform 0.3s;
 
   h3 {
     margin-bottom: 10px;
-    color: #ff5733;
+    color: #00adb4;
   }
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 173, 180, 0.3);
   }
 `;
 
@@ -68,19 +69,19 @@ const FooterLinks = styled.div`
   margin-bottom: 10px;
 
   a {
-    color: #ff5733;
+    color: #00adb4;
     font-size: 1.5rem;
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: #e64a2e;
+      color: #008c9e;
     }
   }
 `;
 
 const projects = [
-  { title: 'Project 1', description: 'Description of Project 1.' },
-  { title: 'Project 2', description: 'Description of Project 2.' },
+  { title: 'NEWS PORTAL', description: 'I have been completed my NEWS POERTAL website using technology Python with Django wih SQlite Database. Including Templates that is(Video news, FAQ, Our News, About, Contact us, Login).' },
+  { title: 'ONLINE SHOPPING', description: 'I have been completed my ONLINE SHOPPING website using technology Python with Django wih SQlite Database. Including Templates that is(Product, FAQ, Add TO Cart, About, Order History, Register, Login).' },
   // Add more projects as needed
 ];
 

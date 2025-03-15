@@ -21,7 +21,7 @@ const Container = styled.section`
 const Heading = styled.h2`
   padding-top: 70px;
   font-size: 2.5rem;
-  color: #333;
+  color: #00adb4;
   margin-bottom: 15px;
 
   @media (max-width: 600px) {
@@ -31,7 +31,7 @@ const Heading = styled.h2`
 
 const Description = styled.p`
   font-size: 1.2rem;
-  color: #555;
+  color: #d1d1d1;
   line-height: 1.6;
   max-width: 600px;
 
@@ -41,14 +41,14 @@ const Description = styled.p`
 `;
 
 const Highlight = styled.span`
-  color: #ff5733;
+  color: #00adb4;
   font-weight: bold;
 `;
 
 const Button = styled(motion.button)`
   margin-top: 20px;
   padding: 12px 20px;
-  background-color: #ff5733;
+  background-color: #00adb4;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -58,7 +58,7 @@ const Button = styled(motion.button)`
   transition: 0.3s;
 
   &:hover {
-    background-color: #e64a2e;
+    background-color: #008c9e;
   }
 `;
 
@@ -81,12 +81,12 @@ const FooterLinks = styled.div`
   margin-bottom: 10px;
 
   a {
-    color: #ff5733;
+    color: #00adb4;
     font-size: 1.5rem;
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: #e64a2e;
+      color: #008c9e;
     }
   }
 `;

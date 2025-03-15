@@ -87,8 +87,8 @@ const Button = styled.a`
 
 const projects = [
   {
-    title: 'Project 1',
-    description: 'Description of Project 1.',
+    title: 'NEWS PORTAL',
+    description: '',
     image: 'https://via.placeholder.com/300x200', // Replace with real image
     github: 'https://github.com/yourusername/project1',
     liveDemo: 'https://yourliveproject1.com',

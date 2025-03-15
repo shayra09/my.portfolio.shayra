@@ -17,7 +17,7 @@ const Container = styled.section`
 const Heading = styled(motion.h2)`
   padding-top: 70px;
   font-size: 2.5rem;
-  color: #333;
+  color: #00adb4;
   margin-bottom: 20px;
 
   @media (max-width: 600px) {
@@ -29,19 +29,19 @@ const ContactInfo = styled.div`
   margin-bottom: 30px;
   p {
     font-size: 1.1rem;
-    color: #555;
+    color: #d1d1d1;
     margin: 8px 0;
   }
 
   a {
-    color: #ff5733;
+    color: #00adb4;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 
     &:hover {
       text-decoration: underline;
-      color: #e64a2e;
+      color: #008c9e;
     }
   }
 `;
@@ -54,20 +54,20 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #00adb4;
   border-radius: 5px;
   font-size: 1rem;
   outline: none;
   transition: 0.3s;
 
   &:focus {
-    border-color: #ff5733;
+    border-color: #008c9e;
   }
 `;
 
 const TextArea = styled.textarea`
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #00adb4;
   border-radius: 5px;
   font-size: 1rem;
   outline: none;
@@ -76,13 +76,13 @@ const TextArea = styled.textarea`
   transition: 0.3s;
 
   &:focus {
-    border-color: #ff5733;
+    border-color: #008c9e;
   }
 `;
 
 const Button = styled(motion.button)`
   padding: 12px 20px;
-  background-color: #ff5733;
+  background-color: #00adb4;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -92,36 +92,7 @@ const Button = styled(motion.button)`
   transition: 0.3s;
 
   &:hover {
-    background-color: #e64a2e;
-  }
-`;
-
-const Footer = styled.footer`
-  width: 100%;
-  background: linear-gradient(90deg, rgba(36,36,36,1), rgba(0,0,0,1));
-  padding: 20px 0;
-  text-align: center;
-  font-size: 1rem;
-  color: #bbb;
-  position: relative;
-  bottom: 0;
-  margin-top: auto;
-`;
-
-const FooterLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-
-  a {
-    color: #ff5733;
-    font-size: 1.5rem;
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: #e64a2e;
-    }
+    background-color: #008c9e;
   }
 `;
 
@@ -139,41 +110,23 @@ const Contact = () => {
   };
 
   return (
-    <>
-      <Container>
-        <Heading as={motion.h2} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          Contact Me
-        </Heading>
+    <Container>
+      <Heading as={motion.h2} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        Contact Me
+      </Heading>
 
-        <ContactInfo>
-          <p>Email: <a href="mailto:shayra@example.com">shayra690@gmail.com</a></p>
-          <p>LinkedIn: <a href="https://linkedin.com/in/shayra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/shayra-ansari-44b9a533b/</a></p>
-        </ContactInfo>
+      <ContactInfo>
+        <p>Email: <a href="mailto:shayra690@gmail.com">shayra690@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/shayra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/shayra-ansari-44b9a533b/</a></p>
+      </ContactInfo>
 
-        <Form onSubmit={handleSubmit} as={motion.form} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-          <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-          <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
-          <TextArea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
-          <Button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Send Message</Button>
-        </Form>
-      </Container>
-
-      <Footer>
-        <FooterLinks>
-          <a href="https://www.linkedin.com/in/shayra-ansari-44b9a533b/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin />
-          </a>
-          <a href="https://github.com/shayra09" target="_blank" rel="noopener noreferrer">
-            <FaGithub />
-          </a>
-          <a href="mailto:shayra690@gmail.com">
-            <FaEnvelope />
-          </a>
-        </FooterLinks>
-        © {new Date().getFullYear()} Shayra | Built by 
-        <a href="https://github.com/shayra09" target="_blank" rel="noopener noreferrer"> Shayra</a>
-      </Footer>
-    </>
+      <Form onSubmit={handleSubmit} as={motion.form} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+        <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+        <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+        <TextArea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
+        <Button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Send Message</Button>
+      </Form>
+    </Container>
   );
 };
 
